@@ -45,15 +45,12 @@ spec:
             - --level=info
             - --random-delay=false
             - --random-error=false
-          env:
-            - name: "HW_RESPONSE"
-              value: "[\"Praseeda Sathaye (Bahia, Brazil)\",\"Siya Sathaye (Alton, Illinois)\"]"
 #          env:
 #            - name: "HW_RESPONSE"
 #              value: "[\"Astrud Gilberto (Bahia, Brazil)\",\"Miles Davis (Alton, Illinois)\"]"
-#          env:
-#            - name: "HW_RESPONSE"
-#              value: "[\"Megadeth\",\"Judas Priest\"]"
+          env:
+            - name: "HW_RESPONSE"
+              value: "[\"Megadeth\",\"Judas Priest\"]"
 #          livenessProbe:
 #            exec:
 #              command:
