@@ -47,7 +47,10 @@ spec:
             - --random-error=false
           env:
             - name: "HW_RESPONSE"
-              value: "[\"Megadeth\",\"Judas Priest\"]"
+              value: "[\"Astrud Gilberto (Bahia, Brazil)\",\"Miles Davis (Alton, Illinois)\"]"
+#          env:
+#            - name: "HW_RESPONSE"
+#              value: "[\"Megadeth\",\"Judas Priest\"]"
 #          livenessProbe:
 #            exec:
 #              command:
