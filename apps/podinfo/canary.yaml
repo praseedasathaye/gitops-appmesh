@@ -20,7 +20,7 @@ spec:
   progressDeadlineSeconds: 60
   service:
     # container port
-    port: 9898
+    port: 9080
     # App Mesh ingress timeout (optional)
     timeout: 15s
     # App Mesh retry policy (optional)
