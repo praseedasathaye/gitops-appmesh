@@ -20,7 +20,7 @@ spec:
   progressDeadlineSeconds: 60
   service:
     # container port
-    port: 9898
+    port: 9080
     # App Mesh ingress timeout (optional)
     timeout: 15s
     # App Mesh retry policy (optional)
@@ -68,9 +68,9 @@ spec:
         timeout: 30s
         metadata:
           type: bash
-          cmd: "curl -sd 'test' http://podinfo-canary.$(NAMESPACE):9898/token | grep token"
+          cmd: "curl -sd 'test' http://podinfo-canary.$(NAMESPACE):9080"
       - name: load-test
         url: http://flagger-loadtester.$(NAMESPACE)/
         timeout: 5s
         metadata:
-          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.$(NAMESPACE):9898/"
+          cmd: "hey -z 1m -q 10 -c 2 http://podinfo-canary.$(NAMESPACE):9080/"
