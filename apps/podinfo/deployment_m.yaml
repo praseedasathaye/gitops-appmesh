@@ -1,0 +1,75 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo
+spec:
+  minReadySeconds: 3
+  revisionHistoryLimit: 5
+  progressDeadlineSeconds: 60
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: podinfo
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "9797"
+      labels:
+        app: podinfo
+    spec:
+      containers:
+        - name: podinfod
+          image: 672518094988.dkr.ecr.us-west-2.amazonaws.com/hello-world:v1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 9080
+              protocol: TCP
+            - name: http-metrics
+              containerPort: 9797
+              protocol: TCP
+            - name: grpc
+              containerPort: 9999
+              protocol: TCP
+          command:
+            - /usr/local/bin/npm
+            - start
+            - --port=9080
+            - --port-metrics=9797
+            - --grpc-port=9999
+            - --grpc-service-name=metal
+            - --level=info
+            - --random-delay=false
+            - --random-error=false
+          env:
+            - name: "HW_RESPONSE"
+              value: "[\"Megadeth\",\"Judas Priest\"]"
+#          livenessProbe:
+#            exec:
+#              command:
+#                - podcli
+#                - check
+#                - http
+#                - localhost:9898/healthz
+#            initialDelaySeconds: 5
+#            timeoutSeconds: 5
+#          readinessProbe:
+#            exec:
+#              command:
+#                - podcli
+#                - check
+#                - http
+#                - localhost:9898/readyz
+#            initialDelaySeconds: 5
+#            timeoutSeconds: 5
+          resources:
+            limits:
+              cpu: 2000m
+              memory: 512Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
