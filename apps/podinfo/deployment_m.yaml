@@ -50,7 +50,7 @@ spec:
 #              value: "[\"Astrud Gilberto (Bahia, Brazil)\",\"Miles Davis (Alton, Illinois)\"]"
           env:
             - name: "HW_RESPONSE"
-              value: "[\"Praseeda Sathaye\",\"Judas Priest\"]"
+              value: "[\"Astrud Gilberto (Bahia, Brazil)\",\"Miles Davis (Alton, Illinois)\"]"
 #          livenessProbe:
 #            exec:
 #              command:
